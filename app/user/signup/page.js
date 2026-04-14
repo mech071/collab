@@ -3,6 +3,19 @@ import React from "react";
 import Link from "next/link";
 import { SiMaterialformkdocs } from "react-icons/si";
 import { signIn } from "next-auth/react"
+import { useSession } from "next-auth/react"
+import { useRouter } from "next/navigation"
+import { useEffect } from "react"
+
+const { data: session } = useSession()
+const router = useRouter()
+
+useEffect(() => {
+  if (session) {
+    router.push("/")
+  }
+}, [session])
+
 const Signup = () => {
   return (
     <>
