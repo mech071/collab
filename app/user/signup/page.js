@@ -14,7 +14,7 @@ const Signup = () => {
 
   useEffect(() => {
     if (session) {
-      router.push("/")
+      router.push("/workplace/dashboard")
     }
   }, [session])
 
