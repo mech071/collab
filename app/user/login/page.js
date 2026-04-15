@@ -13,9 +13,9 @@ import ThemeToggle from "@/app/components/ThemeToggle";
 import { useAuth } from "@/app/components/AuthProvider";
 import { auth } from "@/lib/firebase";
 
-const Signup = () => {
-  const { user, loading } = useAuth();
+const LoginPage = () => {
   const router = useRouter();
+  const { user, loading } = useAuth();
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -60,7 +60,7 @@ const Signup = () => {
           </h1>
         </div>
         <h2 className="mb-6 text-center text-2xl font-semibold text-slate-900 dark:text-slate-100">
-          Create your account
+          Welcome back
         </h2>
         <div className="flex flex-col gap-3">
           <button
@@ -88,15 +88,15 @@ const Signup = () => {
           ) : null}
         </div>
         <p className="mt-5 text-center text-sm leading-6 text-slate-600 dark:text-slate-400">
-          Choose a provider and we&apos;ll create your DocsKraft account automatically.
+          Sign in with the provider you want to use for DocsKraft.
         </p>
         <p className="mt-6 text-center text-sm text-slate-600 dark:text-slate-400">
-          Already have an account?{" "}
+          Need an account?{" "}
           <Link
-            href="/user/login"
+            href="/user/signup"
             className="text-slate-950 hover:underline dark:text-slate-100"
           >
-            Log in
+            Sign up
           </Link>
         </p>
       </div>
@@ -104,4 +104,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default LoginPage;

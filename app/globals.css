@@ -1,26 +1,73 @@
 @import "tailwindcss";
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root {
+  color-scheme: light;
+  --background: #eef3fb;
+  --foreground: #142033;
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-strong: #ffffff;
+  --surface-muted: #dde7f5;
+  --border: rgba(61, 87, 136, 0.18);
+  --shadow: 0 18px 50px rgba(34, 62, 110, 0.12);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root.dark,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #07111f;
+  --foreground: #e6eefc;
+  --surface: rgba(11, 24, 42, 0.84);
+  --surface-strong: #0c1a2d;
+  --surface-muted: #12233d;
+  --border: rgba(126, 162, 224, 0.18);
+  --shadow: 0 24px 70px rgba(2, 8, 23, 0.55);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not(.light):not([data-theme="light"]) {
+    color-scheme: dark;
+    --background: #07111f;
+    --foreground: #e6eefc;
+    --surface: rgba(11, 24, 42, 0.84);
+    --surface-strong: #0c1a2d;
+    --surface-muted: #12233d;
+    --border: rgba(126, 162, 224, 0.18);
+    --shadow: 0 24px 70px rgba(2, 8, 23, 0.55);
   }
+}
+
+* {
+  border-color: var(--border);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-} */
+  background-image:
+    radial-gradient(circle at top left, rgba(122, 162, 247, 0.2), transparent 32%),
+    radial-gradient(circle at top right, rgba(56, 189, 248, 0.12), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 40%);
+  background-attachment: fixed;
+}
+
+a,
+button,
+input,
+textarea {
+  transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
+}
+
+.ProseMirror {
+  min-height: 70vh;
+  outline: none;
+  color: inherit;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: rgba(127, 145, 173, 0.9);
+  content: "Start writing your document...";
+  float: left;
+  height: 0;
+  pointer-events: none;
+}

@@ -1,13 +1,8 @@
-import NextAuth from "next-auth"
-import GithubProvider from "next-auth/providers/github"
+export async function GET() {
+  return Response.json(
+    { message: "NextAuth has been removed. Use Firebase Auth instead." },
+    { status: 410 }
+  );
+}
 
-const handler = NextAuth({
-  providers: [
-    GithubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
-    }),
-  ],
-})
-
-export { handler as GET, handler as POST }
+export const POST = GET;
